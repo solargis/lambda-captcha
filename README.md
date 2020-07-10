@@ -36,6 +36,35 @@ function generateCaptcha() {
 }
 ```
 
+### Generating a captcha in code mode
+
+```js
+const lambdaCaptcha = require('@solargis/lambda-captcha')
+const SECRET = process.env.CAPTCHA_SECRET
+
+function generateCaptcha() {
+  const captchaConfig = lambdaCaptcha.LambdaCaptchaConfigManager.default(SECRET)
+
+  const captcha = lambdaCaptcha.create({
+    ...captchaConfig,
+    mode: 'code', // default mode is 'math'
+    codeLength: 5, // optional, default codeLength is 5
+  })
+
+  return {
+    // The captcha SVG that you can display inside e.g. a form
+    captchaSvg: captcha.captchaSvg,
+    
+    // This is the un-encrypted expression of the captcha.
+    captchaExpression: captcha.expr,
+    
+    // This is the encrypted expression of the captcha.
+    // Pass it along with your server side verification requests.
+    encryptedCaptchaExpression: captcha.encryptedExpr
+  }
+}
+```
+
 ### Verifying a captcha
 
 ```js
