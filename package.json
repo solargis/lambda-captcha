@@ -7,7 +7,9 @@
     "prepare": "npm run build",
     "build": "rimraf dist; tsc --skipLibCheck && cp -r fonts dist/fonts",
     "test": "jest",
-    "tdd": "jest --watch"
+    "tdd": "jest --watch",
+    "preversion": "git push && npm run build && npm run test",
+    "version": "npm publish"
   },
   "keywords": [],
   "author": "",
