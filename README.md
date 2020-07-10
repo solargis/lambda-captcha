@@ -1,5 +1,7 @@
 # lambda-captcha
 
+Forked from: [fourcube/lambda-captcha](https://github.com/fourcube/lambda-captcha)
+
 Generates captchas that can be verified decentrally.
 
 ## Description
@@ -13,7 +15,7 @@ machine readable.
 ### Generating a captcha
 
 ```js
-const lambdaCaptcha = require('lambda-captcha')
+const lambdaCaptcha = require('@solargis/lambda-captcha')
 const SECRET = process.env.CAPTCHA_SECRET
 
 function generateCaptcha() {
@@ -25,7 +27,7 @@ function generateCaptcha() {
     captchaSvg: captcha.captchaSvg,
     
     // This is the un-encrypted expression of the captcha.
-    captchaExpression: captcha.expr
+    captchaExpression: captcha.expr,
     
     // This is the encrypted expression of the captcha.
     // Pass it along with your server side verification requests.
@@ -37,7 +39,7 @@ function generateCaptcha() {
 ### Verifying a captcha
 
 ```js
-const lambdaCaptcha = require('lambda-captcha')
+const lambdaCaptcha = require('@solargis/lambda-captcha')
 const SECRET = process.env.CAPTCHA_SECRET
 
 function verify(encryptedCaptchaExpression, captchaSolution) {

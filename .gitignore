@@ -97,4 +97,7 @@ public
 # DynamoDB Local files
 .dynamodb/
 
+# IntelliJ IDEA
+.idea
+
 dist/
